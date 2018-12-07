@@ -46,7 +46,7 @@ vector<string> GetLines(const string & aLines)
 vector<string> GetLinesFromFile()
 {
   string input;
-  ReadFileToString(LR"(D:\aoc\2018\input)", input);
+  ReadFileToString(LR"(C:\aoc\2018\input)", input);
 
   return GetLines(input);
 }
@@ -113,5 +113,17 @@ public:
     return Iter(aLast, aStep);
   }
 };
+
+template <typename Ret, typename OpT>
+Ret Compare(OpT aL, OpT aR, Ret LtResult, Ret EqResult, Ret GtResult)
+{
+	if (aL < aR)
+		return LtResult;
+	else if (aL == aR)
+		return EqResult;
+	else 
+		return GtResult;
+}
+
 
 #endif // UTILS_H
