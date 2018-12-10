@@ -9,10 +9,12 @@ int minY = MAXINT;
 
 struct PtAndSpeed
 {
-  int x;
   int y;
-  int dx;
+
+  int x;
   int dy;
+
+  int dx;
 };
 
 auto ParseLines(vector<string> & aLines)
@@ -51,7 +53,8 @@ int main(int argc, char *argv[])
 {
   auto gLines = GetLinesFromFile();
   auto ptList = ParseLines(gLines);
-
+  
+  int minHeight = MAXINT;
   for (size_t i = 0;; i++)
   {
     maxX = MININT;
@@ -72,13 +75,21 @@ int main(int argc, char *argv[])
       maxY = max(maxY, el.y);
     }
 
-    if (maxY - minY <= 10)
+    if(minHeight < maxY - minY)
     {
+      // rollback one step
+      for (auto & el : ptList)
+      {
+        el.x -= el.dx;
+        el.y -= el.dy;
+      }
+
       Print(ptList);
       cout << "Iterations: " << i + 1 << endl;
       
       exit(1);
     }
 
+    minHeight = min(minHeight, maxY - minY);
   }
 }
