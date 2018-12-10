@@ -40,7 +40,7 @@ int main()
 	
 	gArray = SplitLineInColumns(lines.front());
 	
-	cout << "S1: " << RecParse() << endl;
+	//cout << "S1: " << RecParse() << endl;
 	stageOne = false;
 	pos = 0;
 	cout << "S2: " << RecParse() << endl;
