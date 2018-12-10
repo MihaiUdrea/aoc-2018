@@ -9,12 +9,10 @@ int minY = MAXINT;
 
 struct PtAndSpeed
 {
-  int y;
-
   int x;
-  int dy;
-
+  int y;
   int dx;
+  int dy;
 };
 
 auto ParseLines(vector<string> & aLines)
@@ -57,11 +55,8 @@ int main(int argc, char *argv[])
   int minHeight = MAXINT;
   for (size_t i = 0;; i++)
   {
-    maxX = MININT;
-    maxY = MININT;
-
-    minX = MAXINT;
-    minY = MAXINT;
+    maxX = maxY = MININT;
+    minX = minY = MAXINT;
 
     for (auto & el : ptList)
     {
